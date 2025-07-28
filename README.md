@@ -47,10 +47,7 @@ Built with modern NLP, deep learning, and vector search technology, this tool en
 	  - Clearly displays the generated answer summary along with supporting context.
 	  - Shows which document and chunk each piece of supporting text came from, ensuring transparency.
 
-9. **Secure Public Access with ngrok (Optional)**
-	 - For use in environments like Google Colab or on cloud servers with no direct public URL:
-	 - Integrates with pyngrok/ngrok to create a secure, temporary public URL for the Streamlit app.
-	 - Share your AI app with anyone, anywhere, instantly.
+
 ---
 
 ## Tech Stack
