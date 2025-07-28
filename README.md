@@ -108,16 +108,68 @@ rouge-score
 ## Video Demo
 
 *A demonstration video will be available here soon!*  
-[![Watch the video](https://img.shields.io/badge/YouTube-Video-red)](https://your-demo-link-here)
+[![Watch the video](https://www.loom.com/share/4e8f3fd0df1e497bbec8334c14a55399?sid=8cc0267c-b68e-436b-aa10-0ca2adb0c057)
+
+---
+## Reflection:
+Building this system clarified the importance of high-quality chunking and cleaning—bad input leads to poor search and summaries. The all-MiniLM-L6-v2 model offered an excellent balance of speed and meaning capture for our needs. Summarization works well for general-purpose questions but can miss subtle details if chunks are too short or too long. Overall, the architecture is flexible and easy to extend as requirements grow.
 
 ---
 
 
+### Component Choices & Rationale
+
+| Component         | Choice / Library                | Reasoning                                      |
+|-------------------|---------------------------------|------------------------------------------------|
+| File Ingestion    | Streamlit file uploader         | Easiest web-based doc input                    |
+| Text Extraction   | PyPDF2, python-docx             | Standard, robust, extensible                   |
+| Chunk & Cleaning  | nltk                            | Keeps context, fits model limits               |
+| Embedding Model   | all-MiniLM-L6-v2                | Fast, high-quality, CPU-friendly               |
+| Vector Database   | Pinecone                        | Efficient serverless spec,  easy to use        |
+| Semantic Search   | Embedding NN search             | Effective for meaning-based retrieval          |
+| Summarization     | HuggingFace pipeline (BART/T5)  | Readable, flexible, easily swapped             |
+
+---
+
+## 2. Performance & Quality Analysis
+
+### Search Accuracy
+- **Strengths:**  
+  - Recovers meaningfully similar passages even when phrased differently.
+  - Good coverage with properly chunked/cleaned data.
+- **Weaknesses:**  
+  - May lose nuance if chunks are too big/small or if chunking is noisy.
+  - Quality depends on input text cleanliness.
+
+### Summarization Quality
+
+- **Strengths:**  
+  - Concise, readable answers.
+  - Handles information spread over several chunks.
+- **Weaknesses:**  
+  - May skip subtle details.
 
 
-- p.s. - to be considered:
+### CPU Performance and Scalability
 
-##  voabulary:
+- **Strengths:**  
+  - Runs efficiently on CPU for modest datasets (hundreds–thousands of docs).
+  - Batch sizes and memory use tunable.
+- **Weaknesses:**  
+  - Large datasets (>50,000 chunks) may need optimization or distributed vector DB.
+  - Summarization slows with long texts or big batch sizes.
+
+---
+
+## 3. Trade-offs & Lessons Learned
+Chunk size vs. context  ==> Overlap helps; too small/large chunks hurt accuracy
+Model size vs. speed    ==> Small models are fast, big models are better but slow
+
+---
+
+
+---
+##  vocabulary:
 
 - **Semantic Search:**  
   Search that is based on the *meaning* of text, not just keyword matches. Achieved by comparing text/query embeddings for contextual similarity.
