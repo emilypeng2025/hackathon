@@ -104,8 +104,8 @@ rouge-score
 
 ## Video Demo
 
-*A demonstration video will be available here soon!*  
-[![Watch the video](https://www.loom.com/share/4e8f3fd0df1e497bbec8334c14a55399?sid=8cc0267c-b68e-436b-aa10-0ca2adb0c057)
+*The demonstration video:*  
+https://www.loom.com/share/4e8f3fd0df1e497bbec8334c14a55399?sid=8cc0267c-b68e-436b-aa10-0ca2adb0c057
 
 ---
 ## Reflection:
